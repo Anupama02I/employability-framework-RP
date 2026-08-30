@@ -1,8 +1,0 @@
-venv
-notebooks
-frontend/node_modules
-frontend/dist
-__pycache__
-.ipynb_checkpoints
-*.pkl
-*.joblib

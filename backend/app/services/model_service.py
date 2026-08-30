@@ -1,196 +1,942 @@
+# backend/app/services/model_service.py
+
+import json
+import logging
+from pathlib import Path
+
 import joblib
+import numpy as np
 import pandas as pd
 import shap
-import dice_ml
-from dice_ml import Dice
 
-# -----------------------------
-# EDUCATION MAP
-# -----------------------------
-edu_map = {
-    "G.C.E O/L": 1,
-    "G.C.E A/L": 2,
-    "Certificate / NVQ Level 3–4": 3,
-    "Diploma / HND / NVQ Level 5–6": 4,
-    "Bachelor's Degree": 5,
-    "Postgraduate Qualification": 6
-}
 
-# -----------------------------
-# LOAD MODELS & ARTIFACTS
-# -----------------------------
-best_model = joblib.load("models/best_model.pkl")
-calibrated_model = joblib.load("models/calibrated_model.pkl")
-feature_columns = joblib.load("models/feature_columns.pkl")
+# ============================================================
+# LOGGING
+# ============================================================
 
-# -----------------------------
-# RECREATE DiCE DATA
-# -----------------------------
-df_dice = pd.read_csv("models/employability_data.csv")
+logger = logging.getLogger(__name__)
 
-categorical_cols = ["Gender_Male", "Gender_Female"]
-categorical_cols += [col for col in feature_columns if col.startswith("Field_")]
 
-continuous_features = [col for col in feature_columns if col not in categorical_cols]
+# ============================================================
+# PATHS
+# ============================================================
 
-data_dice = dice_ml.Data(
-    dataframe=df_dice,
-    continuous_features=continuous_features,
-    outcome_name="Target_Employed"
+# Current file:
+# backend/app/services/model_service.py
+#
+# parents[2] -> backend/
+
+BACKEND_DIR = Path(__file__).resolve().parents[2]
+
+MODELS_DIR = (
+    BACKEND_DIR
+    / "models"
 )
 
-# -----------------------------
-# EXPLAINERS
-# -----------------------------
-explainer = shap.Explainer(best_model)
 
-dice_model = dice_ml.Model(model=calibrated_model, backend="sklearn")
-dice = Dice(data_dice, dice_model)
+MODEL_PATH = (
+    MODELS_DIR
+    / "employability_model_b_random_forest.pkl"
+)
 
-# -----------------------------
-# SKILL MAP
-# -----------------------------
-skill_map = {
-    "Skill_Analytical": "Analytical thinking",
-    "Skill_Resilience": "Resilience",
-    "Skill_Leadership": "Leadership and social influence",
-    "Skill_Creative": "Creative thinking",
-    "Skill_Motivation": "Motivation and self-awareness",
-    "Skill_Tech_Literacy": "Technological literacy",
-    "Skill_Empathy": "Empathy and active listening",
-    "Skill_Curiosity": "Curiosity and lifelong learning"
-}
 
-SKILL_COLUMNS = list(skill_map.keys())
+METADATA_PATH = (
+    MODELS_DIR
+    / "employability_model_metadata.json"
+)
 
-# -----------------------------
-# MAIN FUNCTION
-# -----------------------------
-def analyze_user(input_dict):
 
-    # -----------------------------
-    # 1. PREPROCESS INPUT
-    # -----------------------------
+CATEGORIES_PATH = (
+    MODELS_DIR
+    / "canonical_categories.json"
+)
+
+
+# ============================================================
+# VERIFY ARTIFACTS EXIST
+# ============================================================
+
+if not MODEL_PATH.exists():
+
+    raise FileNotFoundError(
+        f"Employability model not found: "
+        f"{MODEL_PATH}"
+    )
+
+
+if not METADATA_PATH.exists():
+
+    raise FileNotFoundError(
+        f"Model metadata not found: "
+        f"{METADATA_PATH}"
+    )
+
+
+if not CATEGORIES_PATH.exists():
+
+    raise FileNotFoundError(
+        f"Canonical categories file not found: "
+        f"{CATEGORIES_PATH}"
+    )
+
+
+# ============================================================
+# LOAD MODEL ARTIFACTS ONCE
+# ============================================================
+
+# Complete fitted sklearn Pipeline:
+#
+# ColumnTransformer
+#       ↓
+# preprocessing
+#       ↓
+# tuned Random Forest
+
+model = joblib.load(
+    MODEL_PATH
+)
+
+
+with open(
+    METADATA_PATH,
+    "r",
+    encoding="utf-8"
+) as f:
+
+    model_metadata = json.load(
+        f
+    )
+
+
+with open(
+    CATEGORIES_PATH,
+    "r",
+    encoding="utf-8"
+) as f:
+
+    canonical_categories = json.load(
+        f
+    )
+
+
+# ============================================================
+# MODEL CONFIGURATION
+# ============================================================
+
+DECISION_THRESHOLD = float(
+    model_metadata.get(
+        "decision_threshold",
+        0.52
+    )
+)
+
+
+MODEL_FEATURES = (
+    model_metadata.get(
+        "features",
+        []
+    )
+)
+
+
+SKILL_FEATURES = (
+    model_metadata.get(
+        "skill_features",
+        []
+    )
+)
+
+
+if len(MODEL_FEATURES) != 26:
+
+    raise ValueError(
+        "Expected 26 Model B features, "
+        f"but metadata contains "
+        f"{len(MODEL_FEATURES)}."
+    )
+
+
+if len(SKILL_FEATURES) != 10:
+
+    raise ValueError(
+        "Expected 10 skill features, "
+        f"but metadata contains "
+        f"{len(SKILL_FEATURES)}."
+    )
+
+
+# ============================================================
+# CATEGORICAL FEATURES
+# ============================================================
+
+CATEGORICAL_FEATURES = [
+    "gender",
+    "marital_status",
+    "education_level",
+    "field_of_study",
+    "time_since_studies",
+    "province",
+    "digital_access",
+    "formal_training",
+    "training_type",
+    "training_field",
+    "training_duration",
+    "training_relevance",
+]
+
+
+# ============================================================
+# TRAINING STRUCTURAL-MISSINGNESS HANDLING
+# ============================================================
+
+TRAINING_DETAIL_FEATURES = [
+    "training_type",
+    "training_field",
+    "training_duration",
+    "training_relevance",
+]
+
+
+NO_TRAINING_VALUE = (
+    "NOT_APPLICABLE_NO_FORMAL_TRAINING"
+)
+
+
+# ============================================================
+# EXTRACT PIPELINE COMPONENTS FOR SHAP
+# ============================================================
+
+try:
+
+    preprocessor = (
+        model.named_steps[
+            "preprocessor"
+        ]
+    )
+
+    classifier = (
+        model.named_steps[
+            "classifier"
+        ]
+    )
+
+    transformed_feature_names = (
+        preprocessor
+        .get_feature_names_out()
+    )
+
+    # Random Forest → TreeExplainer
+    shap_explainer = (
+        shap.TreeExplainer(
+            classifier
+        )
+    )
+
+
+except Exception as e:
+
+    logger.warning(
+        "SHAP initialization failed: %s",
+        e
+    )
+
+    preprocessor = None
+
+    classifier = None
+
+    transformed_feature_names = None
+
+    shap_explainer = None
+
+
+# ============================================================
+# INPUT PREPARATION
+# ============================================================
+
+def prepare_input(
+    input_dict: dict
+) -> pd.DataFrame:
+
+    """
+    Convert validated API input into the exact
+    canonical Model B representation expected
+    by the saved sklearn Pipeline.
+
+    Important:
+    No manual scaling or one-hot encoding is
+    performed here.
+
+    Those preprocessing steps already exist
+    inside the fitted model pipeline.
+    """
+
     data = input_dict.copy()
 
-    try:
-        # ---------- Gender (One-Hot)
-        data["Gender_Male"] = 1 if data["gender"] == "Male" else 0
-        data["Gender_Female"] = 1 if data["gender"] == "Female" else 0
-        del data["gender"]
 
-        # ---------- Field (One-Hot)
-        fields = [
-            "Field_IT", "Field_Business", "Field_Engineering",
-            "Field_Vocational", "Field_Arts", "Field_Science", "Field_General"
-        ]
+    # ========================================================
+    # Handle Q14 = No
+    #
+    # If respondent has no formal training,
+    # Q15-Q18 are structurally non-applicable.
+    # ========================================================
 
-        for f in fields:
-            data[f] = 0
+    if (
+        data.get(
+            "formal_training"
+        )
+        == "No"
+    ):
 
-        field_key = f"Field_{data['field_of_study']}"
-        if field_key not in fields:
-            raise ValueError("Invalid field_of_study")
+        for feature in (
+            TRAINING_DETAIL_FEATURES
+        ):
 
-        data[field_key] = 1
-        del data["field_of_study"]
-
-        # ---------- Education
-        data["Edu_Level"] = edu_map[data["Edu_Level"]]
-
-    except KeyError:
-        raise ValueError("Invalid categorical input value")
-
-    # Convert to DataFrame
-    input_df = pd.DataFrame([data])
-
-    # Ensure correct feature order
-    input_df = input_df.reindex(columns=feature_columns, fill_value=0)
-
-    # -----------------------------
-    # 2. PREDICTION
-    # -----------------------------
-    prediction = calibrated_model.predict(input_df)[0]
-    probability = calibrated_model.predict_proba(input_df)[0][1]
-
-    status = "employable" if prediction == 1 else "not_employable"
-
-    # -----------------------------
-    # 3. SHAP EXPLANATIONS
-    # -----------------------------
-    shap_values = explainer(input_df)
-
-    values = shap_values.values[0] if hasattr(shap_values, "values") else shap_values[0]
-    shap_dict = dict(zip(feature_columns, values))
-
-    sorted_features = sorted(shap_dict.items(), key=lambda x: abs(x[1]), reverse=True)
-
-    positive_factors = []
-    negative_factors = []
-
-    for feature, value in sorted_features:
-
-        if feature not in SKILL_COLUMNS:
-            continue
-
-        name = skill_map.get(feature, feature)
-
-        if status == "employable" and value > 0:
-            positive_factors.append(name)
-
-        elif status == "not_employable" and value < 0:
-            negative_factors.append(name)
-
-    positive_factors = positive_factors[:3]
-    negative_factors = negative_factors[:3]
-
-    # -----------------------------
-    # 4. COUNTERFACTUALS
-    # -----------------------------
-    recommendations = []
-
-    if status == "not_employable":
-        try:
-            original = input_df.reset_index(drop=True)
-
-            permitted_range = {
-                skill: [original.iloc[0][skill], 5] for skill in SKILL_COLUMNS
-            }
-
-            dice_exp = dice.generate_counterfactuals(
-                input_df,
-                total_CFs=1,
-                desired_class="opposite",
-                features_to_vary=SKILL_COLUMNS,
-                permitted_range=permitted_range
+            data[
+                feature
+            ] = (
+                NO_TRAINING_VALUE
             )
 
-            cf_df = dice_exp.cf_examples_list[0].final_cfs_df
 
-            if not cf_df.empty:
-                cf = cf_df.iloc[0]
+    # ========================================================
+    # Check all required Model B features exist
+    # ========================================================
 
-                for skill in SKILL_COLUMNS:
-                    old = original.iloc[0][skill]
-                    new = cf[skill]
+    missing_features = [
 
-                    if new - old >= 1:
-                        recommendations.append(
-                            f"Improve {skill_map[skill]} from {int(old)} to {int(new)}"
-                        )
+        feature
 
-        except Exception as e:
-            print("DiCE error:", e)
-            recommendations = ["Unable to generate recommendations"]
+        for feature
+        in MODEL_FEATURES
 
-    # -----------------------------
-    # 5. OUTPUT
-    # -----------------------------
+        if feature not in data
+    ]
+
+
+    if missing_features:
+
+        raise ValueError(
+            "Missing required model features: "
+            +
+            ", ".join(
+                missing_features
+            )
+        )
+
+
+    # ========================================================
+    # Keep exact 26 features in exact training order
+    # ========================================================
+
+    input_df = pd.DataFrame(
+        [
+            {
+                feature:
+                    data[feature]
+
+                for feature
+                in MODEL_FEATURES
+            }
+        ]
+    )
+
+
+    # ========================================================
+    # Validate categorical values
+    # ========================================================
+
+    for feature in (
+        CATEGORICAL_FEATURES
+    ):
+
+        value = str(
+            input_df
+            .iloc[0][feature]
+        )
+
+
+        allowed_values = (
+            canonical_categories.get(
+                feature
+            )
+        )
+
+
+        if allowed_values is None:
+
+            raise ValueError(
+                "No canonical category "
+                "definition found for "
+                f"'{feature}'."
+            )
+
+
+        if (
+            value
+            not in allowed_values
+        ):
+
+            raise ValueError(
+                f"Invalid value for "
+                f"'{feature}': "
+                f"'{value}'. "
+                f"Allowed values: "
+                f"{allowed_values}"
+            )
+
+
+    return input_df
+
+
+# ============================================================
+# PREDICTION
+# ============================================================
+
+def predict_employment_outcome(
+    input_df: pd.DataFrame
+):
+
+    """
+    Produce the model probability for class 1
+    and apply the locked 0.52 decision threshold.
+
+    Class 0:
+        Active unemployed recent-search outcome
+
+    Class 1:
+        Employed outcome
+    """
+
+    probabilities = (
+        model.predict_proba(
+            input_df
+        )
+    )
+
+
+    # ========================================================
+    # Find the probability column corresponding
+    # specifically to class label 1.
+    # ========================================================
+
+    model_classes = list(
+        model.classes_
+    )
+
+
+    if 1 not in model_classes:
+
+        raise ValueError(
+            "Loaded model does not contain "
+            "class label 1."
+        )
+
+
+    positive_class_index = (
+        model_classes.index(
+            1
+        )
+    )
+
+
+    probability = float(
+        probabilities[
+            0,
+            positive_class_index
+        ]
+    )
+
+
+    # ========================================================
+    # Apply locked threshold
+    # ========================================================
+
+    predicted_class = int(
+        probability
+        >=
+        DECISION_THRESHOLD
+    )
+
+
+    return (
+        probability,
+        predicted_class
+    )
+
+
+# ============================================================
+# SHAP FEATURE MAPPING
+# ============================================================
+
+def get_original_feature_name(
+    transformed_name: str
+) -> str:
+
+    """
+    Convert transformed pipeline feature names
+    back to canonical original Model B keys.
+
+    Examples:
+
+    numeric__technological_literacy
+        ↓
+    technological_literacy
+
+
+    categorical__province_Western
+        ↓
+    province
+    """
+
+
+    # ========================================================
+    # Numeric
+    # ========================================================
+
+    if transformed_name.startswith(
+        "numeric__"
+    ):
+
+        return (
+            transformed_name.replace(
+                "numeric__",
+                "",
+                1
+            )
+        )
+
+
+    # ========================================================
+    # One-hot categorical
+    # ========================================================
+
+    if transformed_name.startswith(
+        "categorical__"
+    ):
+
+        clean_name = (
+            transformed_name.replace(
+                "categorical__",
+                "",
+                1
+            )
+        )
+
+
+        # Use longest feature names first
+        # to avoid accidental partial matches.
+
+        for feature in sorted(
+            CATEGORICAL_FEATURES,
+            key=len,
+            reverse=True
+        ):
+
+            prefix = (
+                feature
+                + "_"
+            )
+
+
+            if clean_name.startswith(
+                prefix
+            ):
+
+                return feature
+
+
+    return transformed_name
+
+
+# ============================================================
+# LOCAL SHAP EXPLANATION
+# ============================================================
+
+def generate_shap_explanation(
+    input_df: pd.DataFrame,
+    top_n: int = 10
+):
+
+    """
+    Produce language-neutral local SHAP
+    explanation information.
+
+    Instead of English labels such as:
+
+        "Field of study"
+
+    return:
+
+        "field_of_study"
+
+
+    Instead of translating values here:
+
+        "Northern"
+
+    is returned unchanged.
+
+    The frontend's i18n layer is responsible
+    for displaying:
+
+        English
+        Sinhala
+        Tamil
+
+
+    Important:
+    SHAP explains the fitted model's behaviour.
+    It does not establish causal effects.
+    """
+
+    if (
+        shap_explainer is None
+        or
+        preprocessor is None
+        or
+        transformed_feature_names is None
+    ):
+
+        return (
+            [],
+            []
+        )
+
+
+    try:
+
+        # ====================================================
+        # 1. Apply fitted preprocessing
+        # ====================================================
+
+        transformed = (
+            preprocessor.transform(
+                input_df
+            )
+        )
+
+
+        if hasattr(
+            transformed,
+            "toarray"
+        ):
+
+            transformed = (
+                transformed.toarray()
+            )
+
+
+        # ====================================================
+        # 2. Calculate SHAP values
+        # ====================================================
+
+        shap_output = (
+            shap_explainer(
+                transformed
+            )
+        )
+
+
+        values = (
+            shap_output.values
+        )
+
+
+        # ====================================================
+        # 3. Extract class-1 SHAP contributions
+        # ====================================================
+
+        if values.ndim == 3:
+
+            class_labels = list(
+                classifier.classes_
+            )
+
+
+            if 1 not in class_labels:
+
+                raise ValueError(
+                    "Class label 1 "
+                    "was not found in "
+                    "the Random Forest."
+                )
+
+
+            class_one_index = (
+                class_labels.index(
+                    1
+                )
+            )
+
+
+            local_values = (
+                values[
+                    0,
+                    :,
+                    class_one_index
+                ]
+            )
+
+
+        elif values.ndim == 2:
+
+            local_values = (
+                values[0]
+            )
+
+
+        else:
+
+            raise ValueError(
+                "Unexpected SHAP "
+                "output shape: "
+                f"{values.shape}"
+            )
+
+
+        # ====================================================
+        # 4. Aggregate one-hot features back to
+        #    their original canonical variables
+        # ====================================================
+
+        aggregated = {}
+
+
+        for (
+            transformed_feature,
+            shap_value
+        ) in zip(
+            transformed_feature_names,
+            local_values
+        ):
+
+            original_feature = (
+                get_original_feature_name(
+                    transformed_feature
+                )
+            )
+
+
+            aggregated[
+                original_feature
+            ] = (
+                aggregated.get(
+                    original_feature,
+                    0.0
+                )
+                +
+                float(
+                    shap_value
+                )
+            )
+
+
+        # ====================================================
+        # 5. Rank factors by absolute SHAP magnitude
+        # ====================================================
+
+        ranked = sorted(
+            aggregated.items(),
+            key=lambda item:
+                abs(
+                    item[1]
+                ),
+            reverse=True
+        )
+
+
+        positive_factors = []
+
+        negative_factors = []
+
+
+        # ====================================================
+        # 6. Build language-neutral API response
+        # ====================================================
+
+        for (
+            feature_key,
+            shap_value
+        ) in ranked:
+
+            # Only return original Model B inputs.
+            if (
+                feature_key
+                not in input_df.columns
+            ):
+
+                continue
+
+
+            user_value = (
+                input_df
+                .iloc[0][
+                    feature_key
+                ]
+            )
+
+
+            # Convert numpy scalar types
+            # into normal Python values
+            # for JSON serialization.
+
+            if isinstance(
+                user_value,
+                np.generic
+            ):
+
+                user_value = (
+                    user_value.item()
+                )
+
+
+            factor = {
+                "feature_key":
+                    feature_key,
+
+                "value":
+                    user_value
+            }
+
+
+            if shap_value > 0:
+
+                positive_factors.append(
+                    factor
+                )
+
+
+            elif shap_value < 0:
+
+                negative_factors.append(
+                    factor
+                )
+
+
+        # ====================================================
+        # 7. Return strongest factors
+        # ====================================================
+
+        return (
+            positive_factors[
+                :top_n
+            ],
+
+            negative_factors[
+                :top_n
+            ]
+        )
+
+
+    except Exception as e:
+
+        logger.exception(
+            "SHAP explanation failed: %s",
+            e
+        )
+
+
+        # Prediction is still returned even if
+        # explanation generation unexpectedly fails.
+
+        return (
+            [],
+            []
+        )
+
+
+# ============================================================
+# MAIN API SERVICE FUNCTION
+# ============================================================
+
+def analyze_user(
+    input_dict: dict
+):
+
+    """
+    Main employability inference function
+    called by POST /analyze.
+    """
+
+
+    # ========================================================
+    # 1. Prepare canonical Model B input
+    # ========================================================
+
+    input_df = (
+        prepare_input(
+            input_dict
+        )
+    )
+
+
+    # ========================================================
+    # 2. Generate model prediction
+    # ========================================================
+
+    (
+        probability,
+        predicted_class
+    ) = (
+        predict_employment_outcome(
+            input_df
+        )
+    )
+
+
+    # ========================================================
+    # 3. Language-neutral status key
+    # ========================================================
+
+    if predicted_class == 1:
+
+        status = (
+            "positive_employment_outcome"
+        )
+
+    else:
+
+        status = (
+            "negative_employment_outcome"
+        )
+
+
+    # ========================================================
+    # 4. Local SHAP explanation
+    # ========================================================
+
+    (
+        positive_factors,
+        negative_factors
+    ) = (
+        generate_shap_explanation(
+            input_df,
+            top_n=10
+        )
+    )
+
+
+    # ========================================================
+    # 5. API RESPONSE
+    # ========================================================
+
+    # Raw probability is intentionally
+    # NOT exposed to the frontend.
+    #
+    # It is only used internally to apply
+    # DECISION_THRESHOLD = 0.52.
+
     return {
-        "status": status,
-        "probability": f"{float(probability)*100:.2f}%",
-        "probability_score": float(probability),
-        "positive_factors": positive_factors,
-        "negative_factors": negative_factors,
-        "recommendations": recommendations
+
+        "status":
+            status,
+
+        "predicted_class":
+            predicted_class,
+
+        "positive_factors":
+            positive_factors,
+
+        "negative_factors":
+            negative_factors
     }

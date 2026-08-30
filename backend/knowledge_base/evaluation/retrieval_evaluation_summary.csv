@@ -1,0 +1,19 @@
+﻿group_type,group,count,hit_at_1,hit_at_3,hit_at_5,mrr
+Overall,All,40,0.975,0.975,0.975,0.975
+Input style,English,8,1.0,1.0,1.0,1.0
+Input style,Singlish,8,0.875,0.875,0.875,0.875
+Input style,Sinhala,8,1.0,1.0,1.0,1.0
+Input style,Tamil,8,1.0,1.0,1.0,1.0
+Input style,Tanglish,8,1.0,1.0,1.0,1.0
+Knowledge domain,Career preparation,5,0.8,0.8,0.8,0.8
+Knowledge domain,Education and training pathways,20,1.0,1.0,1.0,1.0
+Knowledge domain,Labour-market information,5,1.0,1.0,1.0,1.0
+Knowledge domain,Occupational information,10,1.0,1.0,1.0,1.0
+Information need,cv_skills,5,0.8,0.8,0.8,0.8
+Information need,nvq_progression,5,1.0,1.0,1.0,1.0
+Information need,nysc_training_centres,5,1.0,1.0,1.0,1.0
+Information need,rpl_nvq,5,1.0,1.0,1.0,1.0
+Information need,software_developer_skills,5,1.0,1.0,1.0,1.0
+Information need,state_university_admission,5,1.0,1.0,1.0,1.0
+Information need,web_developer_role,5,1.0,1.0,1.0,1.0
+Information need,youth_unemployment,5,1.0,1.0,1.0,1.0

@@ -1,0 +1,5 @@
+﻿language,cases,intent_correct,intent_accuracy_pct,rag_correct,rag_accuracy_pct
+English,3,3,100.00,3,100.00
+Sinhala,3,3,100.00,3,100.00
+Tamil,3,2,66.67,3,100.00
+OVERALL,9,8,88.89,9,100.00

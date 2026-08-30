@@ -1,0 +1,48 @@
+test_id,information_need,input_style,query,expected_corpus_id,expected_occupation_name,knowledge_domain
+RET001,software_developer_skills,English,"What skills are required to become a software developer?",C001,"software developer","Occupational information"
+RET002,software_developer_skills,Sinhala,"Software developer කෙනෙකුට අවශ්‍ය කුසලතා මොනවාද?",C001,"software developer","Occupational information"
+RET003,software_developer_skills,Tamil,"மென்பொருள் உருவாக்குநராக ஆக என்ன திறன்கள் தேவை?",C001,"software developer","Occupational information"
+RET004,software_developer_skills,Singlish,"software developer kenek wenna ona skills monawada?",C001,"software developer","Occupational information"
+RET005,software_developer_skills,Tanglish,"software developer aaga enna skills venum?",C001,"software developer","Occupational information"
+
+RET006,web_developer_role,English,"What does a web developer do and what skills are needed?",C001,"web developer","Occupational information"
+RET007,web_developer_role,Sinhala,"Web developer කෙනෙක් කරන වැඩ සහ අවශ්‍ය skills මොනවාද?",C001,"web developer","Occupational information"
+RET008,web_developer_role,Tamil,"Web developer என்ன வேலை செய்கிறார் மற்றும் என்ன skills தேவை?",C001,"web developer","Occupational information"
+RET009,web_developer_role,Singlish,"web developer kenek karanne monawada saha ona skills monawada?",C001,"web developer","Occupational information"
+RET010,web_developer_role,Tanglish,"web developer enna velai seivanga, enna skills venum?",C001,"web developer","Occupational information"
+
+RET011,rpl_nvq,English,"What is Recognition of Prior Learning and how is it related to NVQ?",C003,,"Education and training pathways"
+RET012,rpl_nvq,Sinhala,"RPL කියන්නේ මොකක්ද සහ ඒක NVQ එකට සම්බන්ධ වෙන්නේ කොහොමද?",C003,,"Education and training pathways"
+RET013,rpl_nvq,Tamil,"RPL என்றால் என்ன, அது NVQ உடன் எவ்வாறு தொடர்புடையது?",C003,,"Education and training pathways"
+RET014,rpl_nvq,Singlish,"RPL kiyanne mokakda NVQ ekata sambandha wenne kohomada?",C003,,"Education and training pathways"
+RET015,rpl_nvq,Tanglish,"RPL na enna, adhu NVQ oda eppadi connect aaguthu?",C003,,"Education and training pathways"
+
+RET016,nvq_progression,English,"Can I progress to higher qualification levels through the Sri Lankan NVQ system?",C003,,"Education and training pathways"
+RET017,nvq_progression,Sinhala,"Sri Lanka NVQ system එකෙන් ඉහළ qualification level එකකට යන්න පුළුවන්ද?",C003,,"Education and training pathways"
+RET018,nvq_progression,Tamil,"Sri Lanka NVQ system மூலம் உயர்ந்த qualification level க்கு செல்ல முடியுமா?",C003,,"Education and training pathways"
+RET019,nvq_progression,Singlish,"Sri Lanka NVQ system eken higher qualification level ekakata yanna puluwanda?",C003,,"Education and training pathways"
+RET020,nvq_progression,Tanglish,"Sri Lanka NVQ system la higher qualification level ku pogalama?",C003,,"Education and training pathways"
+
+RET021,software_engineering_admission,English,"What are the minimum eligibility requirements for Software Engineering admission in Sri Lankan state universities?",C005,,"Education and training pathways"
+RET022,software_engineering_admission,Sinhala,"ශ්‍රී ලංකාවේ රාජ්‍ය විශ්වවිද්‍යාලවල Software Engineering පාඨමාලාවට ඇතුළත් වීමට අවශ්‍ය අවම සුදුසුකම් මොනවාද?",C005,,"Education and training pathways"
+RET023,software_engineering_admission,Tamil,"இலங்கை அரச பல்கலைக்கழகங்களில் Software Engineering படிப்பில் சேர தேவையான குறைந்தபட்ச தகுதிகள் என்ன?",C005,,"Education and training pathways"
+RET024,software_engineering_admission,Singlish,"Sri Lanka state university wala Software Engineering course ekata enter wenna minimum qualifications monawada?",C005,,"Education and training pathways"
+RET025,software_engineering_admission,Tanglish,"Sri Lanka state university la Software Engineering course ku sera minimum qualifications enna?",C005,,"Education and training pathways"
+
+RET026,cv_skills,English,"How should I show my skills and experience in a CV?",C006,,"Career preparation"
+RET027,cv_skills,Sinhala,"CV එකේ මගේ skills සහ experience හොඳට පෙන්වන්නේ කොහොමද?",C006,,"Career preparation"
+RET028,cv_skills,Tamil,"CV இல் எனது skills மற்றும் experience ஐ எப்படி நன்றாக காட்டுவது?",C006,,"Career preparation"
+RET029,cv_skills,Singlish,"CV eke mage skills saha experience pennanne kohomada?",C006,,"Career preparation"
+RET030,cv_skills,Tanglish,"CV la en skills um experience um eppadi show panrathu?",C006,,"Career preparation"
+
+RET031,youth_unemployment,English,"What is the unemployment situation among young people in Sri Lanka?",C008,,"Labour-market information"
+RET032,youth_unemployment,Sinhala,"ශ්‍රී ලංකාවේ තරුණයන් අතර රැකියා විරහිතභාවය කොහොමද?",C008,,"Labour-market information"
+RET033,youth_unemployment,Tamil,"இலங்கையில் இளைஞர்களின் வேலையின்மை நிலை எப்படி உள்ளது?",C008,,"Labour-market information"
+RET034,youth_unemployment,Singlish,"Sri Lankawe young people athara unemployment situation eka kohomada?",C008,,"Labour-market information"
+RET035,youth_unemployment,Tanglish,"Sri Lanka la young people oda unemployment situation eppadi irukku?",C008,,"Labour-market information"
+
+RET036,nysc_training_centres,English,"What NYSC training centres are available in Sri Lanka?",C012,,"Education and training pathways"
+RET037,nysc_training_centres,Sinhala,"ශ්‍රී ලංකාවේ තියෙන NYSC training centres මොනවාද?",C012,,"Education and training pathways"
+RET038,nysc_training_centres,Tamil,"இலங்கையில் உள்ள NYSC training centres என்னென்ன?",C012,,"Education and training pathways"
+RET039,nysc_training_centres,Singlish,"Sri Lankawe thiyena NYSC training centres monawada?",C012,,"Education and training pathways"
+RET040,nysc_training_centres,Tanglish,"Sri Lanka la irukkura NYSC training centres enna?",C012,,"Education and training pathways"

@@ -1,0 +1,13 @@
+﻿corpus_id,source,knowledge_domain,chunk_count,total_words,mean_words_per_chunk
+C002,CareerOne / TVEC,Career preparation,9,348,38.67
+C003,TVEC,Education and training pathways,151,36183,239.62
+C005,UGC Sri Lanka,Education and training pathways,241,74229,308.0
+C006,ILO,Career preparation,69,22252,322.49
+C007,ILO,Career preparation,103,22874,222.08
+C008,DCS Sri Lanka,Labour-market information,6,2145,357.5
+C009,DCS Sri Lanka,Labour-market information,28,9624,343.71
+C010,Ministry of Labour Sri Lanka,Career support and referral,15,4709,313.93
+C011,National Youth Services Council,Education and training pathways,1,342,342.0
+C012,National Youth Services Council,Education and training pathways,1,468,468.0
+C013,National Youth Services Council,Education and training pathways,1,258,258.0
+C001,European Commission - ESCO,Occupational information,3039,729158,239.93

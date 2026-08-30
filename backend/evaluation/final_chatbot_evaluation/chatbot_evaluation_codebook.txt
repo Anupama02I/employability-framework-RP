@@ -1,0 +1,59 @@
+CHATBOT FINAL EVALUATION CODEBOOK
+
+This formal evaluation set complements the earlier engineering benchmark:
+backend/evaluation/chatbot_test_cases.csv (TC001-TC060).
+Do not overwrite the earlier file.
+
+FINAL SET
+36 fixed cases:
+- 8 Assessment & Personalization
+- 8 RAG Career Guidance
+- 9 Multilingual Consistency
+- 8 Document-Aware Guidance
+- 3 Safety & Robustness
+
+HUMAN RATINGS
+Use 3 independent evaluators (E01-E03).
+
+Likert scores:
+1 = Very poor
+2 = Poor
+3 = Acceptable
+4 = Good
+5 = Very good
+
+Criteria:
+- Relevance
+- Personalization
+- Actionability
+- Clarity
+- Factual grounding
+- Explanation correctness
+- Language quality
+
+Binary failure flags:
+0 = No failure
+1 = Failure detected
+
+Flags:
+- fabricated_claim_0_1
+- demographic_misuse_0_1
+- causal_or_guaranteed_claim_0_1
+- document_source_confusion_0_1
+- contradicts_available_context_0_1
+
+RAG CASES
+Store the deployed top-3 retrieved evidence snippets in:
+retrieved_evidence_1
+retrieved_evidence_2
+retrieved_evidence_3
+
+MULTILINGUAL CONTROL
+Use the same semantic profile/context within each matched EN/SI/TA triplet.
+
+DOCUMENT CONTROL
+Use sanitized/synthetic documents for formal evaluation.
+
+FREEZE RULE
+Do not modify chatbot prompts, routing, RAG configuration, or document rules after seeing evaluation answers.
+Run the complete fixed evaluation first.

@@ -1,0 +1,11 @@
+{
+  "corpus_version": "1.0",
+  "chunk_count": 3664,
+  "embedding_provider": "Cloudflare Workers AI",
+  "embedding_model": "@cf/baai/bge-m3",
+  "embedding_dimension": 1024,
+  "collection_name": "employability_kb_v1",
+  "distance_metric": "cosine",
+  "batch_size": 16,
+  "created_at_utc": "2026-08-25T16:02:58.634434+00:00"
+}

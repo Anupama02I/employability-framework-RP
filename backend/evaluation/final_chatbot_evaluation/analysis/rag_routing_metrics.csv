@@ -1,0 +1,9 @@
+﻿metric,value,percentage
+True positives,16,
+False negatives,0,
+False positives,8,
+True negatives,12,
+Precision,0.6667,66.67
+Recall / sensitivity,1.0000,100.00
+Specificity,0.6000,60.00
+Accuracy,0.7778,77.78

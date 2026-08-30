@@ -1,0 +1,6 @@
+﻿evaluation_area,cases,intent_correct,intent_accuracy_pct,rag_correct,rag_accuracy_pct
+Assessment & Personalization,8,7,87.50,7,87.50
+Document-Aware Guidance,8,5,62.50,3,37.50
+Multilingual Consistency,9,8,88.89,9,100.00
+RAG Career Guidance,8,7,87.50,8,100.00
+Safety & Robustness,3,2,66.67,1,33.33

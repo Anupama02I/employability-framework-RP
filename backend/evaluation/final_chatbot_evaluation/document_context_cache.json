@@ -1,0 +1,227 @@
+{
+  "D_CV01": {
+    "filename": "D_CV01.docx",
+    "document_type": "CV_RESUME",
+    "document_text": "Curriculum Vitae - Evaluation Candidate\nProfile\nEntry-level data and technology graduate with hands-on academic and internship experience in data cleaning, reporting, dashboard development, and version control. Interested in analytical and software-enabled problem solving.\nEducation\nBachelor of Science in Information Technology - Example Institute of Technology, 2025\nRelevant study areas: databases, programming fundamentals, data analytics, statistics, and information systems.\nTechnical Skills\nPython\nSQL\nPower BI\nAdvanced Microsoft Excel\nGit\nExperience\nData Analytics Intern - Example Solutions Ltd. | 3 months\nCleaned and validated tabular data for weekly operational reports.\nWrote SQL queries to retrieve and summarize records for analysis.\nBuilt Power BI dashboard pages for monthly performance reporting.\nUsed advanced Excel functions, PivotTables, and Power Query for data preparation.\nUsed Git to maintain version history for analysis scripts and documentation.\nAcademic Project\nRetail Sales Analysis Dashboard\nPrepared a small retail dataset using Python and Excel.\nQueried structured data using SQL.\nCreated an interactive Power BI dashboard showing sales trends and category performance.\nDocumented the workflow and findings in a short project report.\nProfessional Skills\nAnalytical problem solving\nWritten documentation\nTeam collaboration\nWillingness to learn\nLanguages\nEnglish - working proficiency\nSinhala - native proficiency\nSYNTHETIC EVALUATION FIXTURE - NO REAL PERSONAL DATA",
+    "cv_profile": {
+      "name": null,
+      "professional_summary": "Entry-level data and technology graduate with hands-on academic and internship experience in data cleaning, reporting, dashboard development, and version control. Interested in analytical and software-enabled problem solving.",
+      "education": [
+        {
+          "qualification": "Bachelor of Science in Information Technology",
+          "field": null,
+          "institution": "Example Institute of Technology",
+          "period": "2025"
+        }
+      ],
+      "work_experience": [
+        {
+          "role": "Data Analytics Intern",
+          "organization": "Example Solutions Ltd.",
+          "period": "3 months",
+          "description": "Cleaned and validated tabular data for weekly operational reports. Wrote SQL queries to retrieve and summarize records for analysis. Built Power BI dashboard pages for monthly performance reporting. Used advanced Excel functions, PivotTables, and Power Query for data preparation. Used Git to maintain version history for analysis scripts and documentation."
+        }
+      ],
+      "projects": [
+        {
+          "title": "Retail Sales Analysis Dashboard",
+          "description": "Prepared a small retail dataset using Python and Excel. Queried structured data using SQL. Created an interactive Power BI dashboard showing sales trends and category performance. Documented the workflow and findings in a short project report.",
+          "technologies": [
+            "Python",
+            "Excel",
+            "SQL",
+            "Power BI"
+          ]
+        }
+      ],
+      "certifications": [],
+      "technical_skills": [
+        "Python",
+        "SQL",
+        "Power BI",
+        "Advanced Microsoft Excel",
+        "Git"
+      ],
+      "soft_skills": [
+        "Analytical problem solving",
+        "Written documentation",
+        "Team collaboration",
+        "Willingness to learn"
+      ],
+      "tools_and_technologies": [],
+      "languages": [
+        "English",
+        "Sinhala"
+      ],
+      "achievements": [],
+      "extracurricular_activities": []
+    },
+    "job_description": null,
+    "course_training": null,
+    "employability_document": null
+  },
+  "D_JOB01": {
+    "filename": "D_JOB01.docx",
+    "document_type": "JOB_DESCRIPTION",
+    "document_text": "Job Description - Junior Data Analyst\nRole Summary\nThe Junior Data Analyst supports routine data extraction, cleaning, reporting, dashboard preparation, and interpretation of business information for internal teams.\nKey Responsibilities\nExtract and combine data from structured business databases.\nClean, validate, and organize datasets before analysis.\nPrepare recurring reports using Advanced Microsoft Excel.\nBuild and maintain Power BI dashboards for operational reporting.\nWrite SQL queries for data retrieval and summary analysis.\nCommunicate findings clearly to non-technical colleagues.\nMaintain accurate documentation for reports and data processes.\nRequired Technical Skills\nSQL\nAdvanced Microsoft Excel\nPower BI or Tableau\nData cleaning and validation\nBasic data visualization and reporting\nRequired Professional Skills\nAnalytical thinking\nAttention to detail\nClear written and verbal communication\nAbility to work collaboratively with a team\nQualifications and Experience\nBachelor's degree in Information Technology, Computer Science, Data Science, Statistics, or a related field.\nOne to two years of relevant analytical, reporting, internship, or junior-level experience is preferred.\nSelection Note\nThis job description states the employer-side requirements for the role. It does not describe the skills, qualifications, or experience of any particular applicant.\nSYNTHETIC EVALUATION FIXTURE - NO REAL PERSONAL DATA\nEmployer | SampleTech Lanka (fictional evaluation employer)\nRole | Junior Data Analyst\nLocation | Colombo, Sri Lanka\nEmployment type | Full-time",
+    "cv_profile": null,
+    "job_description": {
+      "job_title": "Junior Data Analyst",
+      "organization": "SampleTech Lanka",
+      "location": "Colombo, Sri Lanka",
+      "employment_type": "Full-time",
+      "responsibilities": [
+        "Support routine data extraction, cleaning, reporting, dashboard preparation, and interpretation of business information for internal teams",
+        "Extract and combine data from structured business databases",
+        "Clean, validate, and organize datasets before analysis",
+        "Prepare recurring reports using Advanced Microsoft Excel",
+        "Build and maintain Power BI dashboards for operational reporting",
+        "Write SQL queries for data retrieval and summary analysis",
+        "Communicate findings clearly to non-technical colleagues",
+        "Maintain accurate documentation for reports and data processes"
+      ],
+      "required_skills": [
+        "SQL",
+        "Advanced Microsoft Excel",
+        "Power BI or Tableau",
+        "Data cleaning and validation",
+        "Basic data visualization and reporting",
+        "Analytical thinking",
+        "Attention to detail",
+        "Clear written and verbal communication",
+        "Ability to work collaboratively with a team"
+      ],
+      "preferred_skills": [],
+      "qualifications": [
+        "Bachelor's degree in Information Technology, Computer Science, Data Science, Statistics, or a related field"
+      ],
+      "experience_requirements": [
+        "One to two years of relevant analytical, reporting, internship, or junior-level experience is preferred"
+      ],
+      "tools_and_technologies": [
+        "SQL",
+        "Microsoft Excel",
+        "Power BI",
+        "Tableau"
+      ],
+      "application_details": []
+    },
+    "course_training": null,
+    "employability_document": null
+  },
+  "D_COURSE01": {
+    "filename": "D_COURSE01.docx",
+    "document_type": "COURSE_TRAINING",
+    "document_text": "Course Brochure - Certificate in Practical Data Analytics\nCourse Overview\nThis introductory programme is designed to develop practical foundations in data preparation, querying, spreadsheet analysis, dashboard creation, and basic programming for analytics.\nModules\nAdvanced Excel: formulas, PivotTables, charts, and Power Query\nSQL fundamentals: filtering, joins, grouping, and summary queries\nPower BI: data import, basic modelling, visualizations, and dashboard design\nIntroduction to Python for data analysis\nData cleaning and validation principles\nCommunicating analytical findings with simple reports and presentations\nLearning Outcomes\nPrepare and clean small structured datasets.\nUse Excel and SQL for routine analysis tasks.\nCreate a basic interactive Power BI dashboard.\nWrite introductory Python code for simple data manipulation.\nExplain key findings from a small analysis task.\nEntry Requirements\nBasic computer literacy.\nAbility to work with files, folders, and standard office applications.\nNo previous programming experience is required.\nCompletion\nA certificate is issued only after successful completion of the required assessments and practical activities.\nNot specified in this brochure: course fee, external accreditation status, or guaranteed employment/job placement.\nSYNTHETIC EVALUATION FIXTURE - NO REAL PERSONAL DATA\nProvider | Example Skills Academy (fictional evaluation provider)\nProgramme | Certificate in Practical Data Analytics\nDuration | 12 weeks\nStudy load | Approximately 6 hours per week\nDelivery | Blended learning: guided sessions and practical exercises",
+    "cv_profile": null,
+    "job_description": null,
+    "course_training": {
+      "course_name": "Certificate in Practical Data Analytics",
+      "provider": "Example Skills Academy",
+      "qualification_or_award": "Certificate",
+      "duration": "12 weeks",
+      "delivery_mode": "Blended learning: guided sessions and practical exercises",
+      "location": null,
+      "entry_requirements": [
+        "Basic computer literacy",
+        "Ability to work with files, folders, and standard office applications",
+        "No previous programming experience is required"
+      ],
+      "content_topics": [
+        "Advanced Excel: formulas, PivotTables, charts, and Power Query",
+        "SQL fundamentals: filtering, joins, grouping, and summary queries",
+        "Power BI: data import, basic modelling, visualizations, and dashboard design",
+        "Introduction to Python for data analysis",
+        "Data cleaning and validation principles",
+        "Communicating analytical findings with simple reports and presentations"
+      ],
+      "skills_covered": [
+        "Data preparation",
+        "Querying",
+        "Spreadsheet analysis",
+        "Dashboard creation",
+        "Basic programming for analytics",
+        "Prepare and clean small structured datasets",
+        "Use Excel and SQL for routine analysis tasks",
+        "Create a basic interactive Power BI dashboard",
+        "Write introductory Python code for simple data manipulation",
+        "Explain key findings from a small analysis task"
+      ],
+      "fees": null,
+      "dates_or_intake": null,
+      "contact_or_application_info": []
+    },
+    "employability_document": null
+  },
+  "D_EMP01": {
+    "filename": "D_EMP01.docx",
+    "document_type": "EMPLOYABILITY_DOCUMENT",
+    "document_text": "Employability Skills Development Guide\nThis is an independent synthetic career-guidance document created for chatbot evaluation. It is not a government policy, official labour-market report, or accredited qualification framework.\nPurpose\nThe guide outlines five general skill areas that can support career preparation and workplace readiness. The skills are presented as development areas for reflection and practice, not as a prediction of employment.\nCommunication\nExpress ideas clearly in writing and conversation, listen actively, and adapt messages to the audience.\nPractice giving a one-minute explanation of a project or task.\nAsk for feedback on clarity in written messages and presentations.\nDigital Literacy\nUse common digital tools responsibly and confidently for communication, information handling, and routine work tasks.\nPractice with spreadsheets, document tools, shared drives, and online collaboration platforms.\nLearn basic data privacy and account-security habits.\nAnalytical Thinking\nBreak problems into smaller parts, compare evidence, identify patterns, and justify conclusions.\nWork through small case problems using available data.\nExplain why a conclusion follows from the evidence used.\nTeamwork\nContribute reliably to shared tasks, coordinate responsibilities, and communicate respectfully with others.\nTake a defined role in a group project or volunteer activity.\nDocument agreed responsibilities and follow up on progress.\nContinuous Learning\nIdentify knowledge gaps, seek appropriate learning resources, and reflect on progress over time.\nSet one short monthly learning goal.\nKeep a simple record of what was learned and how it was applied.\nUsing This Guide\nA reader can select one or two development areas at a time, choose a practical activity, and review progress after several weeks. The guide does not state that every reader lacks these skills, and it does not guarantee an employment outcome.\nSYNTHETIC EVALUATION FIXTURE - NO REAL PERSONAL DATA",
+    "cv_profile": null,
+    "job_description": null,
+    "course_training": null,
+    "employability_document": {
+      "title": "Employability Skills Development Guide",
+      "organization": null,
+      "document_purpose": "To outline five general skill areas that can support career preparation and workplace readiness, presented as development areas for reflection and practice.",
+      "date_or_validity": null,
+      "key_topics": [
+        "Career preparation",
+        "Workplace readiness",
+        "Skill development",
+        "Self-reflection",
+        "Practice activities"
+      ],
+      "key_facts": [
+        "The document is an independent synthetic career-guidance document created for chatbot evaluation.",
+        "It is not a government policy, official labour-market report, or accredited qualification framework.",
+        "The skills are presented as development areas for reflection and practice, not as a prediction of employment.",
+        "The guide does not state that every reader lacks these skills.",
+        "The guide does not guarantee an employment outcome.",
+        "Readers are advised to select one or two development areas at a time and review progress after several weeks."
+      ],
+      "occupations_mentioned": [],
+      "skills_mentioned": [
+        "Communication",
+        "Expressing ideas clearly in writing and conversation",
+        "Active listening",
+        "Adapting messages to the audience",
+        "Digital Literacy",
+        "Using digital tools responsibly",
+        "Information handling",
+        "Using spreadsheets",
+        "Using document tools",
+        "Using shared drives",
+        "Using online collaboration platforms",
+        "Data privacy",
+        "Account security",
+        "Analytical Thinking",
+        "Problem breaking",
+        "Comparing evidence",
+        "Identifying patterns",
+        "Justifying conclusions",
+        "Teamwork",
+        "Contributing reliably to shared tasks",
+        "Coordinating responsibilities",
+        "Communicating respectfully",
+        "Continuous Learning",
+        "Identifying knowledge gaps",
+        "Seeking learning resources",
+        "Reflecting on progress",
+        "Setting learning goals"
+      ],
+      "pathways_or_services": [
+        "Practice giving a one-minute explanation of a project or task",
+        "Ask for feedback on clarity in written messages and presentations",
+        "Practice with spreadsheets, document tools, shared drives, and online collaboration platforms",
+        "Learn basic data privacy and account-security habits",
+        "Work through small case problems using available data",
+        "Explain why a conclusion follows from the evidence used",
+        "Take a defined role in a group project or volunteer activity",
+        "Document agreed responsibilities and follow up on progress",
+        "Set one short monthly learning goal",
+        "Keep a simple record of what was learned and how it was applied"
+      ]
+    }
+  }
+}

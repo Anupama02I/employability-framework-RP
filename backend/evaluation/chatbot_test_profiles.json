@@ -1,0 +1,645 @@
+{
+  "benchmark_version": "1.0",
+  "description": "Controlled synthetic profiles for evaluating the multilingual employability career-guidance chatbot. These profiles are for system evaluation only and are not training observations or real survey respondents.",
+
+  "profiles": [
+    {
+      "profile_id": "P01",
+      "scenario": "Negative outcome with several clearly low-rated skills",
+      "selectedLanguage": "en",
+      "predictionResult": "negative_employment_outcome",
+      "predictedClass": 0,
+
+      "shapPositiveFactors": [
+        {
+          "feature_key": "digital_access",
+          "value": "Good"
+        },
+        {
+          "feature_key": "leadership_social_influence",
+          "value": 4
+        }
+      ],
+
+      "shapNegativeFactors": [
+        {
+          "feature_key": "technological_literacy",
+          "value": 2
+        },
+        {
+          "feature_key": "analytical_thinking",
+          "value": 2
+        },
+        {
+          "feature_key": "talent_management",
+          "value": 2
+        }
+      ],
+
+      "userAssessmentAnswers": {
+        "analytical_thinking": 2,
+        "resilience_flexibility_agility": 3,
+        "leadership_social_influence": 4,
+        "creative_thinking": 3,
+        "motivation_self_awareness": 3,
+        "technological_literacy": 2,
+        "empathy_active_listening": 3,
+        "curiosity_lifelong_learning": 3,
+        "talent_management": 2,
+        "service_orientation": 4,
+
+        "age": 22,
+        "gender": "Female",
+        "marital_status": "Never married",
+        "household_size": 4,
+
+        "education_level": "GCE A-Level",
+        "field_of_study": "General Education / No specialization",
+        "time_since_studies": "6-12 months",
+
+        "province": "Southern",
+        "digital_access": "Good",
+        "english_communication": 2,
+        "digital_confidence": 2,
+
+        "formal_training": "No",
+        "training_type": "NOT_APPLICABLE_NO_FORMAL_TRAINING",
+        "training_field": "NOT_APPLICABLE_NO_FORMAL_TRAINING",
+        "training_duration": "NOT_APPLICABLE_NO_FORMAL_TRAINING",
+        "training_relevance": "NOT_APPLICABLE_NO_FORMAL_TRAINING"
+      },
+
+      "assessmentChatHistory": []
+    },
+
+    {
+      "profile_id": "P02",
+      "scenario": "Positive outcome with clearly strong skill contributors",
+      "selectedLanguage": "en",
+      "predictionResult": "positive_employment_outcome",
+      "predictedClass": 1,
+
+      "shapPositiveFactors": [
+        {
+          "feature_key": "technological_literacy",
+          "value": 5
+        },
+        {
+          "feature_key": "analytical_thinking",
+          "value": 4
+        },
+        {
+          "feature_key": "digital_confidence",
+          "value": 5
+        }
+      ],
+
+      "shapNegativeFactors": [
+        {
+          "feature_key": "province",
+          "value": "Eastern"
+        }
+      ],
+
+      "userAssessmentAnswers": {
+        "analytical_thinking": 4,
+        "resilience_flexibility_agility": 4,
+        "leadership_social_influence": 3,
+        "creative_thinking": 4,
+        "motivation_self_awareness": 4,
+        "technological_literacy": 5,
+        "empathy_active_listening": 3,
+        "curiosity_lifelong_learning": 4,
+        "talent_management": 3,
+        "service_orientation": 4,
+
+        "age": 24,
+        "gender": "Male",
+        "marital_status": "Never married",
+        "household_size": 3,
+
+        "education_level": "Bachelor's Degree",
+        "field_of_study": "IT / Computer Science",
+        "time_since_studies": "Less than 6 months",
+
+        "province": "Eastern",
+        "digital_access": "Excellent",
+        "english_communication": 4,
+        "digital_confidence": 5,
+
+        "formal_training": "Yes",
+        "training_type": "Professional qualification",
+        "training_field": "Information Technology",
+        "training_duration": "6-12 months",
+        "training_relevance": "Highly relevant"
+      },
+
+      "assessmentChatHistory": []
+    },
+
+    {
+      "profile_id": "P03",
+      "scenario": "Negative outcome with high-rated skill having negative SHAP direction",
+      "selectedLanguage": "en",
+      "predictionResult": "negative_employment_outcome",
+      "predictedClass": 0,
+
+      "shapPositiveFactors": [
+        {
+          "feature_key": "creative_thinking",
+          "value": 4
+        }
+      ],
+
+      "shapNegativeFactors": [
+        {
+          "feature_key": "service_orientation",
+          "value": 5
+        },
+        {
+          "feature_key": "technological_literacy",
+          "value": 2
+        },
+        {
+          "feature_key": "marital_status",
+          "value": "Married"
+        }
+      ],
+
+      "userAssessmentAnswers": {
+        "analytical_thinking": 3,
+        "resilience_flexibility_agility": 3,
+        "leadership_social_influence": 3,
+        "creative_thinking": 4,
+        "motivation_self_awareness": 3,
+        "technological_literacy": 2,
+        "empathy_active_listening": 4,
+        "curiosity_lifelong_learning": 3,
+        "talent_management": 3,
+        "service_orientation": 5,
+
+        "age": 27,
+        "gender": "Female",
+        "marital_status": "Married",
+        "household_size": 4,
+
+        "education_level": "Diploma / HND",
+        "field_of_study": "Business / Commerce / Management",
+        "time_since_studies": "6-12 months",
+
+        "province": "Western",
+        "digital_access": "Good",
+        "english_communication": 3,
+        "digital_confidence": 3,
+
+        "formal_training": "Yes",
+        "training_type": "Diploma",
+        "training_field": "Business / Management",
+        "training_duration": "6-12 months",
+        "training_relevance": "Moderately relevant"
+      },
+
+      "assessmentChatHistory": []
+    },
+
+    {
+      "profile_id": "P04",
+      "scenario": "Negative outcome where demographic features dominate raw SHAP explanation",
+      "selectedLanguage": "en",
+      "predictionResult": "negative_employment_outcome",
+      "predictedClass": 0,
+
+      "shapPositiveFactors": [
+        {
+          "feature_key": "analytical_thinking",
+          "value": 4
+        }
+      ],
+
+      "shapNegativeFactors": [
+        {
+          "feature_key": "gender",
+          "value": "Female"
+        },
+        {
+          "feature_key": "province",
+          "value": "Northern"
+        },
+        {
+          "feature_key": "marital_status",
+          "value": "Married"
+        }
+      ],
+
+      "userAssessmentAnswers": {
+        "analytical_thinking": 4,
+        "resilience_flexibility_agility": 3,
+        "leadership_social_influence": 3,
+        "creative_thinking": 3,
+        "motivation_self_awareness": 3,
+        "technological_literacy": 3,
+        "empathy_active_listening": 4,
+        "curiosity_lifelong_learning": 3,
+        "talent_management": 3,
+        "service_orientation": 4,
+
+        "age": 26,
+        "gender": "Female",
+        "marital_status": "Married",
+        "household_size": 5,
+
+        "education_level": "Bachelor's Degree",
+        "field_of_study": "Arts / Humanities / Social Sciences",
+        "time_since_studies": "6-12 months",
+
+        "province": "Northern",
+        "digital_access": "Average",
+        "english_communication": 3,
+        "digital_confidence": 3,
+
+        "formal_training": "No",
+        "training_type": "NOT_APPLICABLE_NO_FORMAL_TRAINING",
+        "training_field": "NOT_APPLICABLE_NO_FORMAL_TRAINING",
+        "training_duration": "NOT_APPLICABLE_NO_FORMAL_TRAINING",
+        "training_relevance": "NOT_APPLICABLE_NO_FORMAL_TRAINING"
+      },
+
+      "assessmentChatHistory": []
+    },
+
+    {
+      "profile_id": "P05",
+      "scenario": "Positive outcome with demographic raw SHAP contributor but usable strong skill factors",
+      "selectedLanguage": "en",
+      "predictionResult": "positive_employment_outcome",
+      "predictedClass": 1,
+
+      "shapPositiveFactors": [
+        {
+          "feature_key": "province",
+          "value": "Western"
+        },
+        {
+          "feature_key": "leadership_social_influence",
+          "value": 5
+        },
+        {
+          "feature_key": "resilience_flexibility_agility",
+          "value": 4
+        }
+      ],
+
+      "shapNegativeFactors": [],
+
+      "userAssessmentAnswers": {
+        "analytical_thinking": 4,
+        "resilience_flexibility_agility": 4,
+        "leadership_social_influence": 5,
+        "creative_thinking": 4,
+        "motivation_self_awareness": 4,
+        "technological_literacy": 4,
+        "empathy_active_listening": 4,
+        "curiosity_lifelong_learning": 4,
+        "talent_management": 3,
+        "service_orientation": 4,
+
+        "age": 25,
+        "gender": "Male",
+        "marital_status": "Never married",
+        "household_size": 4,
+
+        "education_level": "Bachelor's Degree",
+        "field_of_study": "Engineering / Technology",
+        "time_since_studies": "Less than 6 months",
+
+        "province": "Western",
+        "digital_access": "Excellent",
+        "english_communication": 4,
+        "digital_confidence": 4,
+
+        "formal_training": "Yes",
+        "training_type": "Professional qualification",
+        "training_field": "Information Technology",
+        "training_duration": "More than 1 year",
+        "training_relevance": "Very relevant"
+      },
+
+      "assessmentChatHistory": []
+    },
+
+    {
+      "profile_id": "P06",
+      "scenario": "Negative outcome with no clearly low-rated skill",
+      "selectedLanguage": "en",
+      "predictionResult": "negative_employment_outcome",
+      "predictedClass": 0,
+
+      "shapPositiveFactors": [
+        {
+          "feature_key": "creative_thinking",
+          "value": 3
+        }
+      ],
+
+      "shapNegativeFactors": [
+        {
+          "feature_key": "field_of_study",
+          "value": "General Education / No specialization"
+        },
+        {
+          "feature_key": "province",
+          "value": "Uva"
+        },
+        {
+          "feature_key": "service_orientation",
+          "value": 4
+        }
+      ],
+
+      "userAssessmentAnswers": {
+        "analytical_thinking": 3,
+        "resilience_flexibility_agility": 3,
+        "leadership_social_influence": 3,
+        "creative_thinking": 3,
+        "motivation_self_awareness": 3,
+        "technological_literacy": 3,
+        "empathy_active_listening": 3,
+        "curiosity_lifelong_learning": 3,
+        "talent_management": 3,
+        "service_orientation": 4,
+
+        "age": 21,
+        "gender": "Male",
+        "marital_status": "Never married",
+        "household_size": 5,
+
+        "education_level": "GCE A-Level",
+        "field_of_study": "General Education / No specialization",
+        "time_since_studies": "Not completed yet",
+
+        "province": "Uva",
+        "digital_access": "Average",
+        "english_communication": 3,
+        "digital_confidence": 3,
+
+        "formal_training": "No",
+        "training_type": "NOT_APPLICABLE_NO_FORMAL_TRAINING",
+        "training_field": "NOT_APPLICABLE_NO_FORMAL_TRAINING",
+        "training_duration": "NOT_APPLICABLE_NO_FORMAL_TRAINING",
+        "training_relevance": "NOT_APPLICABLE_NO_FORMAL_TRAINING"
+      },
+
+      "assessmentChatHistory": []
+    },
+
+    {
+      "profile_id": "P07",
+      "scenario": "Positive outcome with vocational background",
+      "selectedLanguage": "en",
+      "predictionResult": "positive_employment_outcome",
+      "predictedClass": 1,
+
+      "shapPositiveFactors": [
+        {
+          "feature_key": "resilience_flexibility_agility",
+          "value": 5
+        },
+        {
+          "feature_key": "service_orientation",
+          "value": 4
+        },
+        {
+          "feature_key": "digital_confidence",
+          "value": 4
+        }
+      ],
+
+      "shapNegativeFactors": [],
+
+      "userAssessmentAnswers": {
+        "analytical_thinking": 3,
+        "resilience_flexibility_agility": 5,
+        "leadership_social_influence": 4,
+        "creative_thinking": 3,
+        "motivation_self_awareness": 4,
+        "technological_literacy": 3,
+        "empathy_active_listening": 4,
+        "curiosity_lifelong_learning": 4,
+        "talent_management": 3,
+        "service_orientation": 4,
+
+        "age": 23,
+        "gender": "Male",
+        "marital_status": "Never married",
+        "household_size": 4,
+
+        "education_level": "Certificate / Vocational Training",
+        "field_of_study": "Vocational Trades",
+        "time_since_studies": "Less than 6 months",
+
+        "province": "Central",
+        "digital_access": "Good",
+        "english_communication": 3,
+        "digital_confidence": 4,
+
+        "formal_training": "Yes",
+        "training_type": "NVQ",
+        "training_field": "Automobile / Mechanical",
+        "training_duration": "More than 1 year",
+        "training_relevance": "Highly relevant"
+      },
+
+      "assessmentChatHistory": []
+    },
+
+    {
+      "profile_id": "P08",
+      "scenario": "Negative outcome with communication and digital capability development needs",
+      "selectedLanguage": "en",
+      "predictionResult": "negative_employment_outcome",
+      "predictedClass": 0,
+
+      "shapPositiveFactors": [
+        {
+          "feature_key": "empathy_active_listening",
+          "value": 4
+        }
+      ],
+
+      "shapNegativeFactors": [
+        {
+          "feature_key": "digital_confidence",
+          "value": 1
+        },
+        {
+          "feature_key": "technological_literacy",
+          "value": 2
+        },
+        {
+          "feature_key": "english_communication",
+          "value": 2
+        }
+      ],
+
+      "userAssessmentAnswers": {
+        "analytical_thinking": 3,
+        "resilience_flexibility_agility": 3,
+        "leadership_social_influence": 3,
+        "creative_thinking": 3,
+        "motivation_self_awareness": 3,
+        "technological_literacy": 2,
+        "empathy_active_listening": 4,
+        "curiosity_lifelong_learning": 3,
+        "talent_management": 3,
+        "service_orientation": 4,
+
+        "age": 20,
+        "gender": "Female",
+        "marital_status": "Never married",
+        "household_size": 6,
+
+        "education_level": "GCE A-Level",
+        "field_of_study": "Arts / Humanities / Social Sciences",
+        "time_since_studies": "Not completed yet",
+
+        "province": "Sabaragamuwa",
+        "digital_access": "Limited access",
+        "english_communication": 2,
+        "digital_confidence": 1,
+
+        "formal_training": "No",
+        "training_type": "NOT_APPLICABLE_NO_FORMAL_TRAINING",
+        "training_field": "NOT_APPLICABLE_NO_FORMAL_TRAINING",
+        "training_duration": "NOT_APPLICABLE_NO_FORMAL_TRAINING",
+        "training_relevance": "NOT_APPLICABLE_NO_FORMAL_TRAINING"
+      },
+
+      "assessmentChatHistory": []
+    },
+
+    {
+      "profile_id": "P09",
+      "scenario": "Positive outcome with business background and interpersonal strengths",
+      "selectedLanguage": "en",
+      "predictionResult": "positive_employment_outcome",
+      "predictedClass": 1,
+
+      "shapPositiveFactors": [
+        {
+          "feature_key": "leadership_social_influence",
+          "value": 5
+        },
+        {
+          "feature_key": "empathy_active_listening",
+          "value": 4
+        },
+        {
+          "feature_key": "service_orientation",
+          "value": 5
+        }
+      ],
+
+      "shapNegativeFactors": [],
+
+      "userAssessmentAnswers": {
+        "analytical_thinking": 4,
+        "resilience_flexibility_agility": 4,
+        "leadership_social_influence": 5,
+        "creative_thinking": 3,
+        "motivation_self_awareness": 4,
+        "technological_literacy": 3,
+        "empathy_active_listening": 4,
+        "curiosity_lifelong_learning": 4,
+        "talent_management": 4,
+        "service_orientation": 5,
+
+        "age": 28,
+        "gender": "Female",
+        "marital_status": "Married",
+        "household_size": 3,
+
+        "education_level": "Bachelor's Degree",
+        "field_of_study": "Business / Commerce / Management",
+        "time_since_studies": "More than 12 months",
+
+        "province": "North Western",
+        "digital_access": "Good",
+        "english_communication": 4,
+        "digital_confidence": 4,
+
+        "formal_training": "Yes",
+        "training_type": "Professional qualification",
+        "training_field": "Business / Management",
+        "training_duration": "More than 1 year",
+        "training_relevance": "Very relevant"
+      },
+
+      "assessmentChatHistory": []
+    },
+
+    {
+      "profile_id": "P10",
+      "scenario": "Mixed profile with moderate skills and one clear development area",
+      "selectedLanguage": "en",
+      "predictionResult": "negative_employment_outcome",
+      "predictedClass": 0,
+
+      "shapPositiveFactors": [
+        {
+          "feature_key": "creative_thinking",
+          "value": 4
+        }
+      ],
+
+      "shapNegativeFactors": [
+        {
+          "feature_key": "analytical_thinking",
+          "value": 2
+        },
+        {
+          "feature_key": "education_level",
+          "value": "Diploma / HND"
+        },
+        {
+          "feature_key": "province",
+          "value": "Central"
+        }
+      ],
+
+      "userAssessmentAnswers": {
+        "analytical_thinking": 2,
+        "resilience_flexibility_agility": 3,
+        "leadership_social_influence": 3,
+        "creative_thinking": 4,
+        "motivation_self_awareness": 3,
+        "technological_literacy": 3,
+        "empathy_active_listening": 3,
+        "curiosity_lifelong_learning": 3,
+        "talent_management": 3,
+        "service_orientation": 3,
+
+        "age": 24,
+        "gender": "Male",
+        "marital_status": "Never married",
+        "household_size": 4,
+
+        "education_level": "Diploma / HND",
+        "field_of_study": "Science / Mathematics",
+        "time_since_studies": "6-12 months",
+
+        "province": "Central",
+        "digital_access": "Good",
+        "english_communication": 3,
+        "digital_confidence": 3,
+
+        "formal_training": "Yes",
+        "training_type": "Diploma",
+        "training_field": "Other",
+        "training_duration": "6-12 months",
+        "training_relevance": "Moderately relevant"
+      },
+
+      "assessmentChatHistory": []
+    }
+  ]
+}

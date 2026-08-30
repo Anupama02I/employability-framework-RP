@@ -1,0 +1,95 @@
+{
+    "gender": [
+        "Female",
+        "Male"
+    ],
+    "marital_status": [
+        "Divorced / Separated",
+        "Married",
+        "Never married",
+        "Prefer not to say",
+        "Widowed"
+    ],
+    "education_level": [
+        "Bachelor's Degree",
+        "Certificate / Vocational Training",
+        "Diploma / HND",
+        "GCE A-Level",
+        "GCE O-Level",
+        "Postgraduate Qualification"
+    ],
+    "field_of_study": [
+        "Arts / Humanities / Social Sciences",
+        "Business / Commerce / Management",
+        "Engineering / Technology",
+        "General Education / No specialization",
+        "IT / Computer Science",
+        "Science / Mathematics",
+        "Vocational Trades"
+    ],
+    "time_since_studies": [
+        "6-12 months",
+        "Less than 6 months",
+        "More than 12 months",
+        "Not completed yet"
+    ],
+    "province": [
+        "Central",
+        "Eastern",
+        "North Central",
+        "North Western",
+        "Northern",
+        "Sabaragamuwa",
+        "Southern",
+        "Uva",
+        "Western"
+    ],
+    "digital_access": [
+        "Average",
+        "Excellent",
+        "Good",
+        "Limited access",
+        "No access / Very unreliable"
+    ],
+    "formal_training": [
+        "No",
+        "Yes"
+    ],
+    "training_type": [
+        "Apprenticeship / Technical training",
+        "Certificate course",
+        "Diploma",
+        "Higher Diploma",
+        "NOT_APPLICABLE_NO_FORMAL_TRAINING",
+        "NVQ",
+        "Other",
+        "Professional qualification"
+    ],
+    "training_field": [
+        "Agriculture",
+        "Automobile / Mechanical",
+        "Beauty / Personal Care",
+        "Business / Management",
+        "Construction",
+        "Healthcare",
+        "Hospitality / Tourism",
+        "Information Technology",
+        "NOT_APPLICABLE_NO_FORMAL_TRAINING",
+        "Other"
+    ],
+    "training_duration": [
+        "3-6 months",
+        "6-12 months",
+        "Less than 3 months",
+        "More than 1 year",
+        "NOT_APPLICABLE_NO_FORMAL_TRAINING"
+    ],
+    "training_relevance": [
+        "Highly relevant",
+        "Moderately relevant",
+        "NOT_APPLICABLE_NO_FORMAL_TRAINING",
+        "Not relevant",
+        "Slightly relevant",
+        "Very relevant"
+    ]
+}

@@ -1,0 +1,11 @@
+﻿metric,correct_or_count,denominator,percentage
+Total fixed evaluation cases,36,36,100.00
+HTTP/API execution success,36,36,100.00
+Run completion,36,36,100.00
+Intent-routing accuracy,29,36,80.56
+RAG-routing accuracy,28,36,77.78
+RAG-required recall,16,16,100.00
+No-RAG specificity,12,20,60.00
+RAG precision,16,24,66.67
+RAG calls returning >=1 evidence item,24,24,100.00
+RAG calls returning Top-3 evidence,24,24,100.00

@@ -1,0 +1,5 @@
+﻿metric,correct_or_count,denominator,percentage
+Document-aware cases,8,8,100.00
+Document type/context recognition,8,8,100.00
+Intent-routing accuracy,5,8,62.50
+RAG-routing accuracy,3,8,37.50

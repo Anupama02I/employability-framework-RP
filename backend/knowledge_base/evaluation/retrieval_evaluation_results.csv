@@ -1,0 +1,41 @@
+﻿test_id,information_need,input_style,knowledge_domain,query,expected_corpus_id,expected_occupation_name,relevant_rank,hit_at_1,hit_at_3,hit_at_5,reciprocal_rank,top1_corpus_id,top1_occupation_name,top1_title,top1_distance
+RET001,software_developer_skills,English,Occupational information,What skills are required to become a software developer?,C001,software developer,1,1,1,1,1.0,C001,software developer,software developer,0.2921
+RET002,software_developer_skills,Sinhala,Occupational information,Software developer කෙනෙකුට අවශ්‍ය කුසලතා මොනවාද?,C001,software developer,1,1,1,1,1.0,C001,software developer,software developer,0.2836
+RET003,software_developer_skills,Tamil,Occupational information,மென்பொருள் உருவாக்குநராக ஆக என்ன திறன்கள் தேவை?,C001,software developer,1,1,1,1,1.0,C001,software developer,software developer,0.3821
+RET004,software_developer_skills,Singlish,Occupational information,software developer kenek wenna ona skills monawada?,C001,software developer,1,1,1,1,1.0,C001,software developer,software developer,0.3141
+RET005,software_developer_skills,Tanglish,Occupational information,software developer aaga enna skills venum?,C001,software developer,1,1,1,1,1.0,C001,software developer,software developer,0.3852
+RET006,web_developer_role,English,Occupational information,What does a web developer do and what skills are needed?,C001,web developer,1,1,1,1,1.0,C001,web developer,web developer,0.2665
+RET007,web_developer_role,Sinhala,Occupational information,Web developer කෙනෙක් කරන වැඩ සහ අවශ්‍ය skills මොනවාද?,C001,web developer,1,1,1,1,1.0,C001,web developer,web developer,0.2483
+RET008,web_developer_role,Tamil,Occupational information,Web developer என்ன வேலை செய்கிறார் மற்றும் என்ன skills தேவை?,C001,web developer,1,1,1,1,1.0,C001,web developer,web developer,0.2616
+RET009,web_developer_role,Singlish,Occupational information,web developer kenek karanne monawada saha ona skills monawada?,C001,web developer,1,1,1,1,1.0,C001,web developer,web developer,0.4931
+RET010,web_developer_role,Tanglish,Occupational information,"web developer enna velai seivanga, enna skills venum?",C001,web developer,1,1,1,1,1.0,C001,web developer,web developer,0.4563
+RET011,rpl_nvq,English,Education and training pathways,What is Recognition of Prior Learning and how is it related to NVQ?,C003,,1,1,1,1,1.0,C003,,NVQ Framework of Sri Lanka - Operations Manual 2021,0.2892
+RET012,rpl_nvq,Sinhala,Education and training pathways,RPL කියන්නේ මොකක්ද සහ ඒක NVQ එකට සම්බන්ධ වෙන්නේ කොහොමද?,C003,,1,1,1,1,1.0,C003,,NVQ Framework of Sri Lanka - Operations Manual 2021,0.4386
+RET013,rpl_nvq,Tamil,Education and training pathways,"RPL என்றால் என்ன, அது NVQ உடன் எவ்வாறு தொடர்புடையது?",C003,,1,1,1,1,1.0,C003,,NVQ Framework of Sri Lanka - Operations Manual 2021,0.4344
+RET014,rpl_nvq,Singlish,Education and training pathways,RPL kiyanne mokakda NVQ ekata sambandha wenne kohomada?,C003,,1,1,1,1,1.0,C003,,NVQ Framework of Sri Lanka - Operations Manual 2021,0.4333
+RET015,rpl_nvq,Tanglish,Education and training pathways,"RPL na enna, adhu NVQ oda eppadi connect aaguthu?",C003,,1,1,1,1,1.0,C003,,NVQ Framework of Sri Lanka - Operations Manual 2021,0.4465
+RET016,nvq_progression,English,Education and training pathways,Can I progress to higher qualification levels through the Sri Lankan NVQ system?,C003,,1,1,1,1,1.0,C003,,NVQ Framework of Sri Lanka - Operations Manual 2021,0.2275
+RET017,nvq_progression,Sinhala,Education and training pathways,Sri Lanka NVQ system එකෙන් ඉහළ qualification level එකකට යන්න පුළුවන්ද?,C003,,1,1,1,1,1.0,C003,,NVQ Framework of Sri Lanka - Operations Manual 2021,0.2139
+RET018,nvq_progression,Tamil,Education and training pathways,Sri Lanka NVQ system மூலம் உயர்ந்த qualification level க்கு செல்ல முடியுமா?,C003,,1,1,1,1,1.0,C003,,NVQ Framework of Sri Lanka - Operations Manual 2021,0.222
+RET019,nvq_progression,Singlish,Education and training pathways,Sri Lanka NVQ system eken higher qualification level ekakata yanna puluwanda?,C003,,1,1,1,1,1.0,C003,,NVQ Framework of Sri Lanka - Operations Manual 2021,0.328
+RET020,nvq_progression,Tanglish,Education and training pathways,Sri Lanka NVQ system la higher qualification level ku pogalama?,C003,,1,1,1,1,1.0,C003,,NVQ Framework of Sri Lanka - Operations Manual 2021,0.3254
+RET021,state_university_admission,English,Education and training pathways,What are the minimum requirements for admission to Sri Lankan state universities?,C005,,1,1,1,1,1.0,C005,,University Admissions Handbook 2025/2026,0.2833
+RET022,state_university_admission,Sinhala,Education and training pathways,ශ්‍රී ලංකාවේ රාජ්‍ය විශ්වවිද්‍යාලයකට ඇතුළත් වීමට අවශ්‍ය අවම සුදුසුකම් මොනවාද?,C005,,1,1,1,1,1.0,C005,,University Admissions Handbook 2025/2026,0.3594
+RET023,state_university_admission,Tamil,Education and training pathways,இலங்கை அரச பல்கலைக்கழகத்தில் சேர தேவையான குறைந்தபட்ச தகுதிகள் என்ன?,C005,,1,1,1,1,1.0,C005,,University Admissions Handbook 2025/2026,0.3557
+RET024,state_university_admission,Singlish,Education and training pathways,Sri Lanka state university ekakata enter wenna minimum qualifications monawada?,C005,,1,1,1,1,1.0,C005,,University Admissions Handbook 2025/2026,0.2812
+RET025,state_university_admission,Tanglish,Education and training pathways,Sri Lanka state university la sera minimum qualifications enna?,C005,,1,1,1,1,1.0,C005,,University Admissions Handbook 2025/2026,0.2806
+RET026,cv_skills,English,Career preparation,How should I show my skills and experience in a CV?,C006,,1,1,1,1,1.0,C006,,How to Support a Jobseeker?,0.3493
+RET027,cv_skills,Sinhala,Career preparation,CV එකේ මගේ skills සහ experience හොඳට පෙන්වන්නේ කොහොමද?,C006,,1,1,1,1,1.0,C006,,How to Support a Jobseeker?,0.342
+RET028,cv_skills,Tamil,Career preparation,CV இல் எனது skills மற்றும் experience ஐ எப்படி நன்றாக காட்டுவது?,C006,,1,1,1,1,1.0,C006,,How to Support a Jobseeker?,0.3594
+RET029,cv_skills,Singlish,Career preparation,CV eke mage skills saha experience pennanne kohomada?,C006,,,0,0,0,0.0,C003,,NVQ Framework of Sri Lanka - Operations Manual 2021,0.5628
+RET030,cv_skills,Tanglish,Career preparation,CV la en skills um experience um eppadi show panrathu?,C006,,1,1,1,1,1.0,C006,,How to Support a Jobseeker?,0.4177
+RET031,youth_unemployment,English,Labour-market information,What is the unemployment situation among young people in Sri Lanka?,C008,,1,1,1,1,1.0,C008,,Labour Force Survey Annual Bulletin 2025,0.2708
+RET032,youth_unemployment,Sinhala,Labour-market information,ශ්‍රී ලංකාවේ තරුණයන් අතර රැකියා විරහිතභාවය කොහොමද?,C008,,1,1,1,1,1.0,C008,,Labour Force Survey Annual Bulletin 2025,0.4084
+RET033,youth_unemployment,Tamil,Labour-market information,இலங்கையில் இளைஞர்களின் வேலையின்மை நிலை எப்படி உள்ளது?,C008,,1,1,1,1,1.0,C008,,Labour Force Survey Annual Bulletin 2025,0.3652
+RET034,youth_unemployment,Singlish,Labour-market information,Sri Lankawe young people athara unemployment situation eka kohomada?,C008,,1,1,1,1,1.0,C008,,Labour Force Survey Annual Bulletin 2025,0.3242
+RET035,youth_unemployment,Tanglish,Labour-market information,Sri Lanka la young people oda unemployment situation eppadi irukku?,C008,,1,1,1,1,1.0,C008,,Labour Force Survey Annual Bulletin 2025,0.2822
+RET036,nysc_training_centres,English,Education and training pathways,What NYSC training centres are available in Sri Lanka?,C012,,1,1,1,1,1.0,C012,,NYSC Training Centres Directory,0.3176
+RET037,nysc_training_centres,Sinhala,Education and training pathways,ශ්‍රී ලංකාවේ තියෙන NYSC training centres මොනවාද?,C012,,1,1,1,1,1.0,C012,,NYSC Training Centres Directory,0.3877
+RET038,nysc_training_centres,Tamil,Education and training pathways,இலங்கையில் உள்ள NYSC training centres என்னென்ன?,C012,,1,1,1,1,1.0,C012,,NYSC Training Centres Directory,0.3875
+RET039,nysc_training_centres,Singlish,Education and training pathways,Sri Lankawe thiyena NYSC training centres monawada?,C012,,1,1,1,1,1.0,C012,,NYSC Training Centres Directory,0.3394
+RET040,nysc_training_centres,Tanglish,Education and training pathways,Sri Lanka la irukkura NYSC training centres enna?,C012,,1,1,1,1,1.0,C012,,NYSC Training Centres Directory,0.3806
