@@ -13,3 +13,5 @@ google-genai
 python-dotenv
 
 python-multipart
+
+groq==1.6.0
