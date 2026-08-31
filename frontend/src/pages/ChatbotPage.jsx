@@ -972,7 +972,7 @@ const handleDocumentUpload = async (
 
       const response =
         await fetch(
-          "`${import.meta.env.VITE_API_BASE_URL}/document/upload`",
+           `${import.meta.env.VITE_API_BASE_URL}/document/upload`,
           {
             method:
               "POST",
