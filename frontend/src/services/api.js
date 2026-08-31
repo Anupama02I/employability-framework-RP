@@ -1,5 +1,8 @@
+const API_BASE_URL =
+  import.meta.env.VITE_API_BASE_URL;
+
 export async function analyzeUser(data) {
-  const response = await fetch("http://127.0.0.1:8000/analyze", {
+  const response = await fetch(`${API_BASE_URL}/analyze`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -22,7 +25,7 @@ export const chatWithBot = async ({
   uploadedDocument = null,
 }) => {
 
-  const response = await fetch("http://127.0.0.1:8000/chat", {
+  const response = await fetch(`${API_BASE_URL}/chat`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
