@@ -16,6 +16,7 @@ import {
 } from "../data/questions";
 
 import {
+  getSavedEmployabilityProfile,
   saveEmployabilityProfile,
 } from "../services/predictionStorage";
 
@@ -173,6 +174,33 @@ export default function InputPage() {
 
   const navigate =
     useNavigate();
+
+  const handleContinueToCareerGuidance = () => {
+
+  const savedProfile =
+    getSavedEmployabilityProfile();
+
+
+  if (!savedProfile) {
+
+    alert(
+      "No completed employability assessment was found. Please complete the assessment first."
+    );
+
+    return;
+  }
+
+
+  navigate(
+    "/chat",
+    {
+      state: {
+        employabilityProfile:
+          savedProfile,
+      },
+    }
+  );
+};
 
   const scrollRef =
     useRef(null);
@@ -896,13 +924,13 @@ export default function InputPage() {
 
 
       // ======================================================
-      // 7. Go directly to Career Guidance Chat
+      // 7. Go to Employability Result Page
       //
       // ResultPage is intentionally skipped.
       // ======================================================
 
       navigate(
-        "/chat",
+        "/result",
         {
           state: {
             employabilityProfile,
@@ -1257,8 +1285,7 @@ export default function InputPage() {
                 }
 
                 onClick={
-                  () =>
-                    navigate("/chat")
+                  handleContinueToCareerGuidance
                 }
               >
 

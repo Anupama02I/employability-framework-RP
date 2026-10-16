@@ -22,7 +22,7 @@ import {
   translations,
 } from "../data/questions";
 
-import html2pdf from "html2pdf.js";
+
 
 // ============================================================
 // ROUTE PROFILE
@@ -138,6 +138,10 @@ const CHAT_TEXT = {
     downloadResult:
       "Download PDF",
 
+    viewResult:
+      "View Assessment Result",
+
+
     retake:
       "Retake Assessment",
 
@@ -224,6 +228,10 @@ const CHAT_TEXT = {
 
     downloadResult:
       "PDF බාගන්න",
+
+    viewResult:
+      "ඇගයීමේ ප්‍රතිඵල බලන්න",
+
 
     retake:
       "නැවත ඇගයීම කරන්න",
@@ -312,6 +320,9 @@ const CHAT_TEXT = {
     downloadResult:
       "PDF பதிவிறக்கவும்",
 
+    viewResult:
+      "மதிப்பீட்டு முடிவைப் பார்க்கவும்",
+
     retake:
       "மதிப்பீட்டை மீண்டும் செய்யவும்",
 
@@ -378,8 +389,7 @@ export default function ChatbotPage() {
   const fileInputRef =
     useRef(null);
 
-  const assessmentPdfRef =
-    useRef(null);
+ 
   // ==========================================================
   // GET PROFILE
   // ==========================================================
@@ -703,64 +713,87 @@ export default function ChatbotPage() {
 
     return (
 
+  <div
+
+    key={
+      `influence-${factor.feature_key}-${index}`
+    }
+
+    style={
+      styles.factorCard
+    }
+  >
+
+    <div
+      style={
+        styles.factorCardHeader
+      }
+    >
+
       <div
-
-        key={
-          `influence-${factor.feature_key}-${index}`
-        }
-
         style={
-          styles.factorCard
+          styles.factorName
         }
       >
 
-        <div
-          style={
-            styles.factorName
-          }
-        >
-
-          {
-            featureLabel
-          }
-
-        </div>
-
-
-        <div
-          style={
-            styles.ratingLine
-          }
-        >
-
-          <strong
-            style={
-              styles.ratingWord
-            }
-          >
-
-            {
-              ratingLabel
-            }
-
-          </strong>
-
-
-          <span
-            style={
-              styles.ratingScore
-            }
-          >
-
-            {
-              `${factor.value}/5`
-            }
-
-          </span>
-
-        </div>
+        {
+          featureLabel
+        }
 
       </div>
+
+
+      <span
+        style={
+          styles.factorScore
+        }
+      >
+
+        {
+          `${factor.value}/5`
+        }
+
+      </span>
+
+    </div>
+
+
+    <div
+      style={
+        styles.factorSkillTrack
+      }
+    >
+
+      <div
+
+        style={{
+          ...styles.factorSkillFill,
+
+          width:
+            `${(
+              Number(factor.value) / 5
+            ) * 100}%`,
+        }}
+
+      />
+
+    </div>
+
+
+    <div
+      style={
+        styles.factorRatingWord
+      }
+    >
+
+      {
+        ratingLabel
+      }
+
+    </div>
+
+  </div>
+     
     );
   };
 
@@ -1270,78 +1303,7 @@ const handleDocumentUpload = async (
     );
   };
 
-  // ==========================================================
-// DOWNLOAD ASSESSMENT RESULT AS PDF
-// ==========================================================
 
-const handleDownloadAssessmentPdf = () => {
-
-  if (
-    !assessmentPdfRef.current
-  ) {
-    return;
-  }
-
-
-  const options = {
-
-    margin:
-      10,
-
-    filename:
-      "Employability_Assessment_Result.pdf",
-
-    image: {
-      type:
-        "jpeg",
-
-      quality:
-        0.98,
-    },
-
-    html2canvas: {
-
-      scale:
-        2,
-
-      useCORS:
-        true,
-
-      backgroundColor:
-        "#ffffff",
-    },
-
-    jsPDF: {
-
-      unit:
-        "mm",
-
-      format:
-        "a4",
-
-      orientation:
-        "portrait",
-    },
-
-    pagebreak: {
-      mode: [
-        "avoid-all",
-        "css",
-        "legacy",
-      ],
-    },
-  };
-
-
-  html2pdf()
-    .set(
-      options
-    )
-    .from(
-      assessmentPdfRef.current
-    )
-    .save();
-};
 
   // ==========================================================
   // NO ASSESSMENT FALLBACK
@@ -1459,9 +1421,6 @@ const handleDownloadAssessmentPdf = () => {
         >
 
           <div
-            ref={
-              assessmentPdfRef
-            }
 
             style={
               styles.pdfAssessmentContent
@@ -1688,73 +1647,65 @@ const handleDownloadAssessmentPdf = () => {
             }
           >
 
-            <button
 
-              type="button"
+            {/* -------------------------------------------------
+            RESULT / ASSESSMENT NAVIGATION
+            -------------------------------------------------- */}
 
-              style={
-                styles.downloadPdfButton
-              }
-
-              onClick={
-                handleDownloadAssessmentPdf
-              }
-
-              title={
-                chatText.downloadResult
-              }
+            <div
+              style={{
+                marginTop: "auto",
+                display: "flex",
+                flexDirection: "column",
+                gap: "10px",
+              }}
             >
 
-              <svg
-                width="15"
-                height="15"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                aria-hidden="true"
-            >
+              <button
 
-                <path
-                 d="M12 3v12"
-                />
+                style={
+                  styles.resultButton
+                }
 
-                <path
-                  d="m7 10 5 5 5-5"
-                />
+                onClick={
+                  () =>
+                    navigate(
+                      "/result",
+                      {
+                        state: {
+                          employabilityProfile,
+                      },
+                      }
+                    )
+                }
+              >
 
-                <path
-                  d="M5 21h14"
-                />
+                {
+                  chatText.viewResult
+                }
 
-              </svg>
-
-              {
-                chatText.downloadResult
-              }
-
-            </button>
+              </button>
 
 
-            <button
+              <button
 
-              style={
-                styles.outlineButton
-              }
+                style={
+                  styles.outlineButton
+                }
 
-              onClick={
-                () =>
-                  navigate("/")
-              }
-            >
+                onClick={
+                  () =>
+                    navigate("/")
+                }
+              >
 
-              {
-                chatText.retake
-              }
+                {
+                  chatText.retake
+                }
 
-            </button>
+              </button>
+
+            </div>
 
           </div>
 
@@ -2909,76 +2860,132 @@ const styles = {
       "8px",
   },
 
-
   factorCard: {
 
-    backgroundColor:
-      "#ffffff",
+  backgroundColor:
+    "#ffffff",
 
-    border:
-      "1px solid #dbe4ef",
+  border:
+    "1px solid #dbe4ef",
 
-    borderRadius:
-      "14px",
+  borderRadius:
+    "14px",
 
-    padding:
-      "12px 13px",
-  },
-
-
-  factorName: {
-
-    color:
-      "#0f172a",
-
-    fontSize:
-      "13px",
-
-    fontWeight:
-      "800",
-
-    lineHeight:
-      1.4,
-  },
+  padding:
+    "13px 14px",
+},
 
 
-  ratingLine: {
+factorCardHeader: {
 
-    display:
-      "flex",
+  display:
+    "flex",
 
-    alignItems:
-      "center",
+  justifyContent:
+    "space-between",
 
-    gap:
-      "7px",
+  alignItems:
+    "flex-start",
 
-    marginTop:
-      "6px",
-  },
-
-
-  ratingWord: {
-
-    color:
-      "#334155",
-
-    fontSize:
-      "13px",
-  },
+  gap:
+    "12px",
+},
 
 
-  ratingScore: {
+factorName: {
 
-    color:
-      "#64748b",
+  color:
+    "#0f172a",
 
-    fontSize:
-      "12px",
+  fontSize:
+    "13px",
 
-    fontWeight:
-      "700",
-  },
+  fontWeight:
+    "800",
+
+  lineHeight:
+    1.4,
+
+  flex:
+    1,
+},
+
+
+factorScore: {
+
+  flexShrink:
+    0,
+
+  color:
+    "#4338ca",
+
+  backgroundColor:
+    "#eef2ff",
+
+  borderRadius:
+    "999px",
+
+  padding:
+    "4px 8px",
+
+  fontSize:
+    "11px",
+
+  fontWeight:
+    "800",
+},
+
+
+factorSkillTrack: {
+
+  width:
+    "100%",
+
+  height:
+    "7px",
+
+  marginTop:
+    "11px",
+
+  borderRadius:
+    "999px",
+
+  backgroundColor:
+    "#e2e8f0",
+
+  overflow:
+    "hidden",
+},
+
+
+factorSkillFill: {
+
+  height:
+    "100%",
+
+  borderRadius:
+    "999px",
+
+  background:
+    "linear-gradient(90deg, #6366f1, #8b5cf6)",
+},
+
+
+factorRatingWord: {
+
+  marginTop:
+    "7px",
+
+  color:
+    "#64748b",
+
+  fontSize:
+    "12px",
+
+  fontWeight:
+    "600",
+},
+
 
 
   backgroundValue: {
@@ -3160,46 +3167,34 @@ sidebarActions: {
 },
 
 
-downloadPdfButton: {
-
-  width:
-    "100%",
-
-  display:
-    "flex",
-
-  alignItems:
-    "center",
-
-  justifyContent:
-    "center",
-
-  gap:
-    "7px",
+  resultButton: {
 
   backgroundColor:
-    "#f8fafc",
+    "#4f46e5",
 
   color:
-    "#475569",
+    "#ffffff",
 
   border:
-    "1px solid #cbd5e1",
+    "1px solid #4f46e5",
 
   borderRadius:
-    "12px",
+    "14px",
 
   padding:
-    "9px 12px",
+    "12px 16px",
 
   fontSize:
-    "12px",
+    "14px",
 
   fontWeight:
-    "800",
+    "700",
 
   cursor:
     "pointer",
+
+  width:
+    "100%",
 },
 
   outlineButton: {

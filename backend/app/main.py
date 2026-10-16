@@ -9,6 +9,7 @@ from fastapi.middleware.cors import (
 from app.routes import (
     analyze,
     chat,
+    occupations,
 )
 
 from app.routes.document_route import (
@@ -39,6 +40,9 @@ app.include_router(
     chat.router
 )
 
+app.include_router(
+    occupations.router
+)
 
 # ============================================================
 # CORS

@@ -7,6 +7,7 @@ import {
 
 import InputPage from "./pages/InputPage";
 import ChatbotPage from "./pages/ChatbotPage";
+import ResultPage from "./pages/ResultPage";
 
 
 function App() {
@@ -22,7 +23,11 @@ function App() {
           path="/"
           element={<InputPage />}
         />
-
+        
+        <Route
+          path="/result"
+          element={<ResultPage />}
+        />
 
         {/* Assessment result + career guidance chatbot */}
         <Route
